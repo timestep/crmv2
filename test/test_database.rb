@@ -86,8 +86,8 @@ class DatabaseTest < Test::Unit::TestCase
 		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
 		@testdatabase.add_contact(person1)
 		@testdatabase.add_contact(person2)
-		assert_equal person2[0], @testdatabase.find_contact_first_name("Rocky")
-		assert_equal person1[0], @testdatabase.find_contact_first_name("John")
+		assert_equal person2, @testdatabase.find_contact_first_name("Rocky")
+		assert_equal person1, @testdatabase.find_contact_first_name("John")
 	end
 
 	def test_find_contact_last_name
@@ -95,8 +95,8 @@ class DatabaseTest < Test::Unit::TestCase
 		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
 		@testdatabase.add_contact(person1)
 		@testdatabase.add_contact(person2)
-		assert_equal person2[1], @testdatabase.find_contact_last_name("Balboa")
-		assert_equal person1[1], @testdatabase.find_contact_last_name("Smith")
+		assert_equal person2, @testdatabase.find_contact_last_name("Balboa")
+		assert_equal person1, @testdatabase.find_contact_last_name("Smith")
 	end
 
 	def test_find_contact_email
