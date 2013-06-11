@@ -22,11 +22,36 @@ class Database
 	def delete_contact(contact)
 		@database.delete(contact){"Contact does not exist"}
 	end
+
+	def find_contact_with_firstname(firstname)
+		0.upto(@database.size-1) do |x|
+			if @database[x][:firstname] == firstname
+				return @database[x]
+			end
+		end
+	end
+
+	def find_contact_with_lastname(lastname)
+		0.upto(@database.size-1) do |x|
+			if @database[x][:lastname] == lastname
+				return @database[x]
+			end
+		end
+	end
+
+	def find_email(attribute)
+		0.upto(@database.size-1) do |x|
+			if @database[x].values.include? attribute
+				return @database[x][:email]
+			end
+		end
+	end
 end
+
 
 class Contact
 
-	attr_accessor :contact
+	attr_accessor :contact, :temp
 
 	def initialize
 		@contact = {:firstname => nil,
@@ -38,13 +63,14 @@ class Contact
 	end
 
 	def convert_input_to_hash(input)
+		contact = {}
 		if input.length==5
-			@contact[:firstname] = input[0]
-			@contact[:lastname] = input[1]
-			@contact[:email] = input[2]
-			@contact[:phone] = input[3]
-			@contact[:note] = input[4]
-			return @contact
+			contact[:firstname] = input[0]
+			contact[:lastname] = input[1]
+			contact[:email] = input[2]
+			contact[:phone] = input[3]
+			contact[:note] = input[4]
+			return contact
 		end
 		return false
 	end

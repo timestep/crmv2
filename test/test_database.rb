@@ -81,31 +81,32 @@ class DatabaseTest < Test::Unit::TestCase
 		assert_equal false, @testcontact.convert_input_to_hash(person2)
 	end
 
-	def test_find_contact_first_name
+	def test_find_contact_with_firstname
 		person1 = ["John","Smith","yol@mlg.com",416988000,"LOLOL"]
 		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
-		@testdatabase.add_contact(person1)
-		@testdatabase.add_contact(person2)
-		assert_equal person2, @testdatabase.find_contact_first_name("Rocky")
-		assert_equal person1, @testdatabase.find_contact_first_name("John")
+		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person1))
+		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person2))
+		assert_equal @testdatabase.database[1], @testdatabase.find_contact_with_firstname("Rocky")
+		assert_equal @testdatabase.database[0], @testdatabase.find_contact_with_firstname("John")
 	end
 
-	def test_find_contact_last_name
-		person1 = ["John","Smith","yol@mlg.com",416988000,"LOLOL"]
-		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
+	def test_find_contact_with_lastname
+		person1 = {:firstname=>"John", :lastname=>"Smith", :email=>"yol@mlg.com", :phone=>416988000, :note=>"LOLOL"}
+		person2 = {:firstname=>"Rocky", :lastname=>"Balboa", :email=>"yol@mlg.com", :phone=>416988000, :note=>"GET WREKT"}
 		@testdatabase.add_contact(person1)
 		@testdatabase.add_contact(person2)
-		assert_equal person2, @testdatabase.find_contact_last_name("Balboa")
-		assert_equal person1, @testdatabase.find_contact_last_name("Smith")
+		assert_equal @testdatabase.database[1], @testdatabase.find_contact_with_lastname("Balboa")
+		assert_equal @testdatabase.database[0], @testdatabase.find_contact_with_lastname("Smith")
 	end
 
-	def test_find_contact_email
+	def test_find_email_with_any_parameter
 		person1 = ["John","Smith","yol@mlg.com",416988000,"LOLOL"]
 		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
-		@testdatabase.add_contact(person1)
-		@testdatabase.add_contact(person2)
-		assert_equal person2[2], @testdatabase.find_contact_email("Rocky")
-		assert_equal person1[2], @testdatabase.find_contact_email("Smith")
+		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person1))
+		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person2))
+		print @testdatabase.database
+		assert_equal person2[2], @testdatabase.find_email("Rocky")
+		assert_equal person1[2], @testdatabase.find_email("Smith")
 	end
 
 
