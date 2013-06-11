@@ -39,7 +39,16 @@ class DatabaseTest < Test::Unit::TestCase
 		contact_to_add_then_delete = {}
 		@testdatabase.add_contact(contact_to_add_then_delete)
 		@testdatabase.delete_contact(contact_to_add_then_delete)
-		assert @testdatabase.database.include? contact_to_add_then_delete
+		assert_equal false, (@testdatabase.database.include? contact_to_add_then_delete)
 	end
 
+	def test_unique_contact
+		contact1 = {:firstname=>"ruff"}
+		contact2 = {:firstname=>"yolo"}
+		contact1 = {:firstname=>"ruff"}
+		@testdatabase.add_contact(contact1)
+		@testdatabase.add_contact(contact2)
+		@testdatabase.add_contact(contact1)
+		assert_equal false, (@testdatabase.database[0] == @testdatabase.database[2])
+	end
 end
