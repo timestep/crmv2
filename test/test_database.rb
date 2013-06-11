@@ -44,11 +44,9 @@ class DatabaseTest < Test::Unit::TestCase
 
 	def test_unique_contact
 		contact1 = {:firstname=>"ruff"}
-		contact2 = {:firstname=>"yolo"}
-		contact1 = {:firstname=>"ruff"}
+		contact2 = {:firstname=>"ruff"}
 		@testdatabase.add_contact(contact1)
 		@testdatabase.add_contact(contact2)
-		@testdatabase.add_contact(contact1)
-		assert_equal false, (@testdatabase.database[0] == @testdatabase.database[2])
+		assert_equal nil, @testdatabase.database[1]
 	end
 end

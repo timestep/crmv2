@@ -9,11 +9,16 @@ class Database
 	end
 
 	def add_contact(contact)
-		@database << contact
+		if @database.include? contact
+			return false
+		else
+			@database << contact
+			return true
+		end
 	end
 
 	def delete_contact(contact)
-		@database.delete(contact){"Contact Deleted"}
+		@database.delete(contact){"Contact does not exist"}
 	end
 end
 
