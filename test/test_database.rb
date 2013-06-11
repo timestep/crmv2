@@ -26,9 +26,9 @@ class DatabaseTest < Test::Unit::TestCase
 	# 	assert @contact 
 	# end
 
-	def test_contact_initialize_creates_empty_hash
-		assert @testcontact.contact.is_a? Hash
-	end
+	# def test_contact_initialize_creates_empty_hash
+	# 	assert @testcontact.contact.is_a? Hash
+	# end
 
 	def test_check_contact_add
 		@testdatabase.add_contact(@testcontact.contact)
@@ -49,4 +49,13 @@ class DatabaseTest < Test::Unit::TestCase
 		@testdatabase.add_contact(contact2)
 		assert_equal nil, @testdatabase.database[1]
 	end
+
+	def test_contact_initialize_creates_hash_with_keys_with_nil_values
+		assert_equal nil, @testcontact.contact[:firstname]
+		assert_equal nil, @testcontact.contact[:lastname]
+		assert_equal nil, @testcontact.contact[:email]
+		assert_equal nil, @testcontact.contact[:phone]
+		assert_equal nil, @testcontact.contact[:note]
+	end
+
 end
