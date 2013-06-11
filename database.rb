@@ -29,6 +29,7 @@ class Database
 				return @database[x]
 			end
 		end
+		return false
 	end
 
 	def find_contact_with_lastname(lastname)
@@ -37,6 +38,7 @@ class Database
 				return @database[x]
 			end
 		end
+		return false
 	end
 
 	def find_email(attribute)
@@ -46,6 +48,18 @@ class Database
 			end
 		end
 	end
+
+	def modify_contact(attribute, hashkey, newvalue)
+		if find_contact_with_lastname(attribute)
+			contact = find_contact_with_firstname(attribute)
+		elsif find_contact_with_firstname(attribute)
+			contact = find_contact_with_firstname(attribute)
+		else
+			return false
+		end
+		contact[hashkey] = newvalue
+	end
+	
 end
 
 

@@ -108,6 +108,15 @@ class DatabaseTest < Test::Unit::TestCase
 		assert_equal person1[2], @testdatabase.find_email("Smith")
 	end
 
+	def test_modify_contact
+		person1 = ["John","Smith","yol@mlg.com",416988000,"LOLOL"]
+		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
+		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person1))
+		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person2))
+		assert_equal 9058888888, @testdatabase.modify_contact("John","phone",9058888888)
+	end
+	
+
 
 
 end
