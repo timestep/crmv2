@@ -114,6 +114,7 @@ class DatabaseTest < Test::Unit::TestCase
 		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person1))
 		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person2))
 		assert_equal 9058888888, @testdatabase.modify_contact("John","phone",9058888888)
+		assert_equal "Bob", @testdatabase.modify_contact("John","firstname","Bob")
 	end
 	
 
