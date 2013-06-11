@@ -9,11 +9,13 @@ class Database
 	end
 
 	def add_contact(contact)
-		if @database.include? contact
-			return false
-		else
-			@database << contact
-			return true
+		if contact.is_a?(Hash)
+			if @database.include? contact
+				return false
+			else
+				@database << contact
+				return true
+			end
 		end
 	end
 
@@ -36,12 +38,15 @@ class Contact
 	end
 
 	def convert_input_to_hash(input)
-		@contact[:firstname] = input[0]
-		@contact[:lastname] = input[1]
-		@contact[:email] = input[2]
-		@contact[:phone] = input[3]
-		@contact[:note] = input[4]
-		return @contact
+		if input.length==5
+			@contact[:firstname] = input[0]
+			@contact[:lastname] = input[1]
+			@contact[:email] = input[2]
+			@contact[:phone] = input[3]
+			@contact[:note] = input[4]
+			return @contact
+		end
+		return false
 	end
 
 

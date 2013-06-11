@@ -81,7 +81,32 @@ class DatabaseTest < Test::Unit::TestCase
 		assert_equal false, @testcontact.convert_input_to_hash(person2)
 	end
 
+	def test_find_contact_first_name
+		person1 = ["John","Smith","yol@mlg.com",416988000,"LOLOL"]
+		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
+		@testdatabase.add_contact(person1)
+		@testdatabase.add_contact(person2)
+		assert_equal person2[0], @testdatabase.find_contact_first_name("Rocky")
+		assert_equal person1[0], @testdatabase.find_contact_first_name("John")
+	end
 
+	def test_find_contact_last_name
+		person1 = ["John","Smith","yol@mlg.com",416988000,"LOLOL"]
+		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
+		@testdatabase.add_contact(person1)
+		@testdatabase.add_contact(person2)
+		assert_equal person2[1], @testdatabase.find_contact_last_name("Balboa")
+		assert_equal person1[1], @testdatabase.find_contact_last_name("Smith")
+	end
+
+	def test_find_contact_email
+		person1 = ["John","Smith","yol@mlg.com",416988000,"LOLOL"]
+		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
+		@testdatabase.add_contact(person1)
+		@testdatabase.add_contact(person2)
+		assert_equal person2[2], @testdatabase.find_contact_email("Rocky")
+		assert_equal person1[2], @testdatabase.find_contact_email("Smith")
+	end
 
 
 
