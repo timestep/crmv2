@@ -20,4 +20,13 @@ class DatabaseTest < Test::Unit::TestCase
 	def test_empty_array
 		assert_equal [], @test.database
 	end
+
+	# def test_make_new_contact
+	# 	assert @contact 
+	# end
+
+	def test_check_contact
+		@test.database_status
+		assert @test.database[0].is_a? Hash
+	end
 end
