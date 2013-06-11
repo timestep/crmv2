@@ -34,4 +34,12 @@ class DatabaseTest < Test::Unit::TestCase
 		@testdatabase.add_contact(@testcontact.contact)
 		assert @testdatabase.database[0].is_a? Hash
 	end
+
+	def test_check_contact_delete
+		contact_to_add_then_delete = {}
+		@testdatabase.add_contact(contact_to_add_then_delete)
+		@testdatabase.delete_contact(contact_to_add_then_delete)
+		assert @testdatabase.database.include? contact_to_add_then_delete
+	end
+
 end
