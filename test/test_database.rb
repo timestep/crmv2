@@ -34,4 +34,5 @@ class DatabaseTest < Test::Unit::TestCase
 		user = {:FirstName => "Chuckles"}
 		@test.database.add(user)
 		assert @test.database[1].is_a? Hash
+	end
 end
