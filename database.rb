@@ -9,12 +9,14 @@ class Database
 	end
 
 	def add_contact(contact)
-		if @database.include? contact
-			return false
-		else
-			@database << contact
-			return true
-		end
+		# if contact.is_a? Hash
+			if @database.include? contact
+				return false
+			else
+				@database << contact
+				return true
+			end
+		# end
 	end
 
 	def delete_contact(contact)
