@@ -29,4 +29,9 @@ class DatabaseTest < Test::Unit::TestCase
 		@test.database_status
 		assert @test.database[0].is_a? Hash
 	end
+
+	def test_check_contact_add
+		user = {:FirstName => "Chuckles"}
+		@test.database.add(user)
+		assert @test.database[1].is_a? Hash
 end
