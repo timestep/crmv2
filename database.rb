@@ -27,7 +27,11 @@ class Contact
 	attr_accessor :contact
 
 	def initialize
-		@contact = {}
+		@contact = {:firstname => nil,
+					:lastname => nil,
+					:email => nil,
+					:phone => nil,
+					:note => nil
+				}
 	end
-
 end

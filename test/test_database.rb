@@ -58,4 +58,15 @@ class DatabaseTest < Test::Unit::TestCase
 		assert_equal nil, @testcontact.contact[:note]
 	end
 
+	def test_contact_contains_information
+		person = ["John","Smith","yol@mlg.com",416988000,"League of Legends is Da Best"]
+		@testdatabase.add_contact(person)	
+		assert_equal person[0], @testdatabase[0].fetch(:firstname)
+		assert_equal person[1], @testdatabase[0].fetch(:lastname)
+		assert_equal person[2], @testdatabase[0].fetch(:email)
+		assert_equal person[3], @testdatabase[0].fetch(:phone)
+		assert_equal person[4], @testdatabase[0].fetch(:note)
+	end
+
+
 end
