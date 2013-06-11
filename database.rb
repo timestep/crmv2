@@ -8,9 +8,18 @@ class Database
 		@database = []
 	end
 
-	def database_status
-		contact = {:FirstName => "Hooligan"}
-		@database = [contact]
+	def add_contact(contact)
+		@database << contact
+	end
+
+end
+
+class Contact
+
+	attr_accessor :contact
+
+	def initialize
+		@contact = {}
 	end
 
 end
