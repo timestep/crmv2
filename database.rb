@@ -34,4 +34,15 @@ class Contact
 					:note => nil
 				}
 	end
+
+	def convert_input_to_hash(input)
+		@contact[:firstname] = input[0]
+		@contact[:lastname] = input[1]
+		@contact[:email] = input[2]
+		@contact[:phone] = input[3]
+		@contact[:note] = input[4]
+		return @contact
+	end
+
+
 end

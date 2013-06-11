@@ -60,13 +60,29 @@ class DatabaseTest < Test::Unit::TestCase
 
 	def test_contact_contains_information
 		person = ["John","Smith","yol@mlg.com",416988000,"League of Legends is Da Best"]
-		@testdatabase.add_contact(person)	
-		assert_equal person[0], @testdatabase[0].fetch(:firstname)
-		assert_equal person[1], @testdatabase[0].fetch(:lastname)
-		assert_equal person[2], @testdatabase[0].fetch(:email)
-		assert_equal person[3], @testdatabase[0].fetch(:phone)
-		assert_equal person[4], @testdatabase[0].fetch(:note)
+		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person))	
+		assert_equal person[0], @testdatabase.database[0].fetch(:firstname)
+		assert_equal person[1], @testdatabase.database[0].fetch(:lastname)
+		assert_equal person[2], @testdatabase.database[0].fetch(:email)
+		assert_equal person[3], @testdatabase.database[0].fetch(:phone)
+		assert_equal person[4], @testdatabase.database[0].fetch(:note)
 	end
+
+	def test_add_contact_rejects_non_hash
+		person = ["John","Smith","yol@mlg.com",416988000,"League of Legends is Da Best"]
+		@testdatabase.add_contact(person)
+		assert_equal [], @testdatabase.database
+	end
+
+	def test_convert_only_accepts_arrays_with_5_parameters
+		person1 = ["John","Smith","yol@mlg.com",416988000]
+		person2 = "this is a string"
+		assert_equal false, @testcontact.convert_input_to_hash(person1)
+		assert_equal false, @testcontact.convert_input_to_hash(person2)
+	end
+
+
+
 
 
 end
