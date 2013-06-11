@@ -12,6 +12,9 @@ class Database
 		@database << contact
 	end
 
+	def delete_contact(contact)
+		@database.delete(contact){"Contact Deleted"}
+	end
 end
 
 class Contact
