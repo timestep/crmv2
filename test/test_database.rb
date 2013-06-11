@@ -16,4 +16,8 @@ class DatabaseTest < Test::Unit::TestCase
 	def test_array_initialize
 		assert @test.database.is_a? Array
 	end
+
+	def test_empty_array
+		assert_equal [], @test.database
+	end
 end
