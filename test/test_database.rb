@@ -104,7 +104,6 @@ class DatabaseTest < Test::Unit::TestCase
 		person2 = ["Rocky","Balboa","yol@mlg.com",416988000,"GET WREKT"]
 		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person1))
 		@testdatabase.add_contact(@testcontact.convert_input_to_hash(person2))
-		print @testdatabase.database
 		assert_equal person2[2], @testdatabase.find_email("Rocky")
 		assert_equal person1[2], @testdatabase.find_email("Smith")
 	end
